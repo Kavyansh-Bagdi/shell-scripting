@@ -1,0 +1,363 @@
+<HTML>
+<HEAD>
+<TITLE>vi Complete Key Binding List</TITLE>
+<META HTTP-EQUIV="Keywords" NAME="Keywords" CONTENT="Thomas A. Fine">
+<LINK REL="icon" HREF="/~fine/images/favicon.gif" TYPE="image/gif">
+</HEAD>
+<BODY BGCOLOR=#FFF0D0 STYLE="max-width: 1000">
+<H1>vi Complete Key Binding List</H1>
+This is not intended as a tutorial.  It is a reference on what every vi
+key binding does, followed by some useful vi tricks and tips.  An expert will
+probably know most of these already, but an intermediate vi user will find
+valuable information, and even an expert may learn a thing or two.
+<H3>complete key binding reference</H3>
+<TABLE CELLSPACING=0 CELLPADDING=0>
+<TR><TH>Key</TH><TH>Action</TH><TH>Followed by</TH></TR>
+<TR><TD>a</TD><TD>enter insertion mode after current character</TD><TD>text, ESC</TR>
+<TR><TD>b</TD><TD>back <A HREF="#defs">word</A></TD></TR>
+<TR><TD>c</TD><TD>change command</TD><TD><A HREF="#defs">cursor motion command</A></TD></TR>
+<TR><TD>d</TD><TD>delete command</TD><TD><A HREF="#defs">cursor motion command</A></TD></TR>
+<TR><TD>e</TD><TD>end of <A HREF="#defs">word</A></TD></TR>
+<TR><TD>f</TD><TD>find character after cursor in current line</TD><TD>character to find</TD></TR>
+<TR><TD>g</TD><TD><A HREF="#defs">UNBOUND</A></TD></TR>
+<TR><TD>h</TD><TD>move left one character</TD></TR>
+<TR><TD>i</TD><TD>enter insertion mode before current character</TD><TD>text, ESC</TD></TR>
+<TR><TD>j</TD><TD>move down one line</TD></TR>
+<TR><TD>k</TD><TD>move up one line</TD></TR>
+<TR><TD>l</TD><TD>move right one character</TD></TR>
+<TR><TD>m</TD><TD>mark current line and position</TD><TD>mark character tag (a-z)</TD></TR>
+<TR><TD>n</TD><TD>repeat last search</TD></TR>
+<TR><TD>o</TD><TD>open line below and enter insertion mode</TD><TD>text, ESC</TD></TR>
+<TR><TD>p</TD><TD>put buffer after cursor</TD></TR>
+<TR><TD>q</TD><TD><A HREF="#defs">UNBOUND</A></TD></TR>
+<TR><TD>r</TD><TD>replace single character at cursor</TD><TD>replacement character expected</TD></TR>
+<TR><TD>s</TD><TD>substitute single character with new text</TD><TD>text, ESC</TD></TR>
+<TR><TD>t</TD><TD>same as "f" but cursor moves to just before found character</TD><TD>character to find</TD></TR>
+<TR><TD>u</TD><TD>undo</TD></TR>
+<TR><TD>v</TD><TD><A HREF="#defs">UNBOUND</A></TD></TR>
+<TR><TD>w</TD><TD>move foreward one <A HREF="#defs">word</A></TD></TR>
+<TR><TD>x</TD><TD>delete single character</TD></TR>
+<TR><TD>y</TD><TD>yank command</TD><TD><A HREF="#defs">cursor motion command</A></TD></TR>
+<TR><TD>z</TD><TD>position current line</TD><TD>CR = top; "." = center; "-"=bottom</TD></TR>
+<TR><TD>A</TD><TD>enter insertion mode after end of line</TD><TD>text, ESC</TD></TR>
+<TR><TD>B</TD><TD>move back one <A HREF="#defs">Word</A></TD></TR>
+<TR><TD>C</TD><TD>change to end of line</TD><TD>text, ESC</TD></TR>
+<TR><TD>D</TD><TD>delete to end of line</TD></TR>
+<TR><TD>E</TD><TD>move to end of <A HREF="#defs">Word</A></TD></TR>
+<TR><TD>F</TD><TD>backwards version of "f"</TD><TD>character to find</TD></TR>
+<TR><TD>G</TD><TD>goto line number prefixed, or goto end if none</TD></TR>
+<TR><TD>H</TD><TD>home cursor - goto first line on screen</TD></TR>
+<TR><TD>I</TD><TD>enter insertion mode before first non-whitespace character</TD><TD>text, ESC</TD></TR>
+<TR><TD>J</TD><TD>join current line with next line</TD></TR>
+<TR><TD>K</TD><TD><A HREF="#defs">UNBOUND</A></TD></TR>
+<TR><TD>L</TD><TD>goto last line on screen</TD></TR>
+<TR><TD>M</TD><TD>goto middle line on screen</TD></TR>
+<TR><TD>N</TD><TD>repeat last search, but in opposite direction of original search</TD></TR>
+<TR><TD>O</TD><TD>open line above and enter insertion mode</TD><TD>text, ESC</TD></TR>
+<TR><TD>P</TD><TD>put buffer before cursor</TD></TR>
+<TR><TD>Q</TD><TD>leave visual mode (go into "ex" mode)</TD></TR>
+<TR><TD>R</TD><TD>replace mode - replaces through end of current line, then inserts</TD><TD>text, ESC</TD></TR>
+<TR><TD>S</TD><TD>substitute entire line - deletes line, enters insertion mode</TD><TD>text, ESC</TD></TR>
+<TR><TD>T</TD><TD>backwards version of "t"</TD><TD>character to find</TD></TR>
+<TR><TD>U</TD><TD>restores line to state when cursor was moved into it</TD></TR>
+<TR><TD>V</TD><TD><A HREF="#defs">UNBOUND</A></TD></TR>
+<TR><TD>W</TD><TD>foreward <A HREF="#defs">Word</A></TD></TR>
+<TR><TD>X</TD><TD>delete backwards single character</TD></TR>
+<TR><TD>Y</TD><TD>yank entire line</TD></TR>
+<TR><TD>Z</TD><TD>first half of quick save-and-exit</TD><TD>"Z"</TD></TR>
+<TR><TD>0</TD><TD>move to column zero</TD></TR>
+<TR><TD>1-9</TD><TD><A HREF="#prefix">numeric precursor to other commands</A></TD><TD>[additional numbers (0-9)] command</TD></TR>
+<TR><TD>&nbsp;</TD><TD>(SPACE) move right one character</TD></TR>
+<TR><TD>!</TD><TD>shell command filter</TD><TD><A HREF="#defs">cursor motion command</A>, shell command</TD></TR>
+<TR><TD>@</TD><TD>vi eval</TD><TD>buffer name (a-z)</TD></TR>
+<TR><TD>#</TD><TD><A HREF="#defs">UNBOUND</A></TD></TR>
+<TR><TD>$</TD><TD>move to end of line</TD></TR>
+<TR><TD>%</TD><TD>match nearest [],(),{} on line, to its match (same line or others)</TD></TR>
+<TR><TD>^</TD><TD>move to first non-whitespace character of line</TD></TR>
+<TR><TD>&amp;</TD><TD>repeat last ex substitution (":s ...") not including modifiers</TD></TR>
+<TR><TD>*</TD><TD><A HREF="#defs">UNBOUND</A></TD></TR>
+<TR><TD>(</TD><TD>move to previous sentence</TD></TR>
+<TR><TD>)</TD><TD>move to next sentence</TD></TR>
+<TR><TD>\</TD><TD><A HREF="#defs">UNBOUND</A></TD></TR>
+<TR><TD>|</TD><TD>move to column zero</TD></TR>
+<TR><TD>-</TD><TD>move to first non-whitespace of previous line</TD></TR>
+<TR><TD>_</TD><TD>similar to "^" but uses numeric prefix oddly</TD></TR>
+<TR><TD>=</TD><TD><A HREF="#defs">UNBOUND</A></TD></TR>
+<TR><TD>+</TD><TD>move to first non-whitespace of next line</TD></TR>
+<TR><TD>[</TD><TD>move to previous "{...}" section</TD><TD>"["</TD></TR>
+<TR><TD>]</TD><TD>move to next "{...}" section</TD><TD>"]"</TD></TR>
+<TR><TD>{</TD><TD>move to previous blank-line separated section</TD><TD>"{"</TD></TR>
+<TR><TD>}</TD><TD>move to next blank-line separated section</TD><TD>"}"</TD></TR>
+<TR><TD>;</TD><TD>repeat last "f", "F", "t", or "T" command</TD></TR>
+<TR><TD>'</TD><TD>move to marked line, first non-whitespace</TD><TD>character tag (a-z)</TD></TR>
+<TR><TD>`</TD><TD>move to marked line, memorized column</TD><TD>character tag (a-z)</TD></TR>
+<TR><TD>:</TD><TD>ex-submode</TD><TD>ex command</TD></TR>
+<TR><TD>"</TD><TD>access numbered buffer; load or access lettered buffer</TD><TD>1-9,a-z</TD></TR>
+<TR><TD>~</TD><TD>reverse case of current character and move cursor forward</TD></TR>
+<TR><TD>,</TD><TD>reverse direction of last "f", "F", "t", or "T" command</TD></TR>
+<TR><TD>.</TD><TD>repeat last text-changing command</TD></TR>
+<TR><TD>/</TD><TD>search forward</TD><TD>search string, ESC or CR</TD></TR>
+<TR><TD>&lt;</TD><TD>unindent command</TD><TD><A HREF="#defs">cursor motion command</A></TD></TR>
+<TR><TD>&gt;</TD><TD>indent command</TD><TD><A HREF="#defs">cursor motion command</A></TD></TR>
+<TR><TD>?</TD><TD>search backward</TD><TD>search string, ESC or CR</TD></TR>
+<TR><TD>^A</TD><TD><A HREF="#defs">UNBOUND</A></TD></TR>
+<TR><TD>^B</TD><TD>back (up) one screen</TD></TR>
+<TR><TD>^C</TD><TD><A HREF="#defs">UNBOUND</A></TD></TR>
+<TR><TD>^D</TD><TD>down half screen</TD></TR>
+<TR><TD>^E</TD><TD>scroll text up (cursor doesn't move unless it has to)</TD></TR>
+<TR><TD>^F</TD><TD>foreward (down) one screen</TD></TR>
+<TR><TD>^G</TD><TD>show status</TD></TR>
+<TR><TD>^H</TD><TD>backspace</TD></TR>
+<TR><TD>^I</TD><TD>(TAB) <A HREF="#defs">UNBOUND</A></TD></TR>
+<TR><TD>^J</TD><TD>line down</TD></TR>
+<TR><TD>^K</TD><TD><A HREF="#defs">UNBOUND</A></TD></TR>
+<TR><TD>^L</TD><TD>refresh screen</TD></TR>
+<TR><TD>^M</TD><TD>(CR) move to first non-whitespace of next line</TD></TR>
+<TR><TD>^N</TD><TD>move down one line</TD></TR>
+<TR><TD>^O</TD><TD><A HREF="#defs">UNBOUND</A></TD></TR>
+<TR><TD>^P</TD><TD>move up one line</TD></TR>
+<TR><TD>^Q</TD><TD>XON</TD></TR>
+<TR><TD>^R</TD><TD>does nothing (variants: redraw; multiple-redo)</TD></TR>
+<TR><TD>^S</TD><TD>XOFF</TD></TR>
+<TR><TD>^T</TD><TD>go to the file/code you were editing before the last tag jump</TD></TR>
+<TR><TD>^U</TD><TD>up half screen</TD></TR>
+<TR><TD>^V</TD><TD><A HREF="#defs">UNBOUND</A></TD></TR>
+<TR><TD>^W</TD><TD><A HREF="#defs">UNBOUND</A></TD></TR>
+<TR><TD>^X</TD><TD><A HREF="#defs">UNBOUND</A></TD></TR>
+<TR><TD>^Y</TD><TD>scroll text down (cursor doesn't move unless it has to)</TD></TR>
+<TR><TD>^Z</TD><TD>suspend program</TD></TR>
+<TR><TD>^[</TD><TD>(ESC) cancel started command; otherwise <A HREF="#defs">UNBOUND</A></TD></TR>
+<TR><TD>^\</TD><TD>leave visual mode (go into "ex" mode)</TD></TR>
+<TR><TD>^]</TD><TD>use word at cursor to lookup function in tags file, edit that file/code</TD></TR>
+<TR><TD>^^</TD><TD>switch file buffers</TD></TR>
+<TR><TD>^_</TD><TD><A HREF="#defs">UNBOUND</A></TD></TR>
+<TR><TD>^?</TD><TD>(DELETE) <A HREF="#defs">UNBOUND</A></TD></TR>
+</TABLE>
+<P>
+<A NAME="defs"><H3>Definitions</H3></A>
+<UL>
+<LI><B>UNBOUND</B> - this key is not normally bound to any vi command<BR>
+<LI><B>word</B> - a lower-case word ("w", "b", "e" commands)
+is defined by a consecutive string of
+letters, numbers, or underscore, or a consecutive string of characters
+that is not any of {letters, numbers, underscore, whitespace}
+<LI><B>Word</B> - an upper-case word ("W", "B", "E" commands) is a consecutive
+sequence of non-whitespace.
+<LI><B>sentence</B>
+<LI><B>paragraph</B>
+<LI><B>cursor motion command</B> - any command which positions the cursor is
+ok here,
+including the use of numeric prefixes.  In addition, a repeat of the edit
+command usually means to apply to the entire current line.  For example,
+"&lt;&lt;" means shift current line left; "cc" means
+replace entire current line; and "dd" means delete entire current line.
+</UL>
+
+
+<H3>Key Bindings in Editing Modes</H3>
+While in any edit mode (insert, replace, etc.) there are some keys that
+are used to adjust behaviour, rather than just to insert text.
+<UL>
+<LI>ESC - leave edit mode, return to command mode
+<LI>^D - move line backwards one shiftwidth.  shiftwidth must be set, and
+either the line must be newly added, or ^T must have been used.
+<LI>^T - move all after cursor forwards one shiftwidth
+<LI>^H - deletes text that was entered during the current edit mode.
+Most versions of vi do not allow deleting to previous line.
+<LI>^V - insert next character even if it is a editing character.
+</UL>
+
+<A NAME="prefix"><H3>Repitition Counts</H3></A>
+Most commands can be prefixed with a multidigit number, that influences the
+way the command works.
+<TABLE>
+<TR><TD>z</TD><TD>position <I>n</I>th line number</TD></TR>
+<TR><TD>G</TD><TD>goto <I>n</I>th line number</TD></TR>
+<TR><TD>|</TD><TD>goto <I>n</I>th column number</TD></TR>
+<TR><TD>r</TD><TD>replace next <I>n</I> characters</TD></TR>
+<TR><TD>s</TD><TD>substitute for next <I>n</I> characters</TD></TR>
+<TR><TD>&lt;&lt;</TD><TD>shift <I>n</I> lines left one shiftwidth</TD></TR>
+<TR><TD>^</TD><TD>ignored?</TD></TR>
+<TR><TD>_</TD><TD>advance <I>n</i>-1 lines</TD></TR>
+<TR><TD></TD><TD></TD></TR>
+</TABLE>
+Need to differentiate between such things as 5yj vs. y5j?
+<H3>Multibuffer</H3>
+Standard vi does have an ability to toggle between two different files.
+These will be the last two edited files (edit new files with :efilename)
+To switch files, use control-^.
+<P>
+These filenames can be reffered to in ex commands, and subshell filters,
+using two special characters:  "%" refers to the current file, and "#"
+refers to the previous file.  Here's some handy things you can do with
+this feature:
+<PRE>
+:map v :!chmod 644 %^[                make world-readable
+:map q :!ci -l %^[                    RCS checkin
+:map V :!diff # %^[                   compare previous and current files
+</PRE>
+<H3>Tags</H3>
+Tags are cool, but I don't use them.  Go figure.  Maybe I'll write something
+up here someday.
+<H3>Mappings and Abbreviations</H3>
+<TT>:map</TT> lets you bind a list of keystrokes to a shortcut in command-mode.
+This shortcut can be a multiple-key sequence (with limitations),
+and the commands within can enter and exit edit-mode.
+Some examples of <TT>:map</TT> can be found above, in the multibuffer section.
+Below is a list of all the normally unbound keys in vi command-mode.
+<PRE>
+g q v K V # * \ = ^A ^C ^I ^K ^O ^V ^W ^X ^[ ^_
+</PRE>
+When you try to map multiple key sequences, you won't be able to start
+them with lower or upper case letters ("Too dangerous to map that"),
+but the punctuation and control characters are fair game.
+In addition, : can't be mapped, and sometimes a few other keys.  Multiple
+key sequences can also be very useful with terminal-generated sequences,
+which is why the escape key is bindable.  I have my xterm set to generate
+=f1 for function key one, and so on, so all the function keys are easier to
+use with bindings.
+<P>
+If you use multiple key shortcuts, you'll want to know about the timeout
+variable.  With <TT>:se timeout</TT>, you have a limited time to generate
+the key sequence.  This is useful if the key sequences are terminal generated.
+With <TT>:se notimeout</TT>, it just keeps waiting until the next character
+does or doesn't match any possible current sequences.
+<P>
+<TT>:map!</TT> lets you bind a list of keystrokes to a shortcut in edit-mode.
+This is useful for adding editing commands to edit mode.  One popular
+trick is to bind the arrow keys to move up and down while (apparently)
+staying in edit-mode, as in the last four lines below.
+<PRE>
+:map! ^? ^H                         Make delete act like backspace
+:map! ^[OA ^[ka                     xterm arrow sequences will 
+:map! ^[OB ^[ja                       exit edit-mode, move the
+:map! ^[OC ^[la                       cursor, and re-enter edit-mode.
+:map! ^[OD ^[ha
+</PRE>
+If you use the above
+trick for arrow-keys in edit-mode, you'll want to set timeout, because
+otherwise you won't get beeps at all when you hit escape, only when you
+use the next keystroke.  With timeout, you get the beep, but after the
+timeout.  Since both of these are annoying, it may be a useful choice to
+avoid multikey sequences that involve escape, as a matter of taste.
+Also, many systems now set up command-mode arrow keys in vi by default,
+which also leads to the same problem.
+<P>
+<TT>:ab</TT> lets you bind a key sequence to an abbreviation,
+for use in edit-mode.
+Abbreviations don't fire until vi decides that you've typed the shortcut
+as a whole word.  So if taf is a shortcut for Thomas A. Fine, and I type
+taffy, it won't substitute because I didn't enter taf as a word by itself.
+(If I'd used <TT>:map!,</TT> then taffy would do the
+replacement before I got to the second "f".)
+<P>
+Abbreviations are echoed normally until complete, therefore the abbreviation
+can't contain escape (you'd leave edit-mode before completing the
+abbreviation),
+but the replacement expression can contain escape, and can leave and return
+to edit-mode.
+<PRE>
+:ab teh the
+:ab #d #define
+:ab #i #include
+:ab cmain main(argc,argv)^Mint argc;^Mchar **argv;^M{^M}^[O
+:ab cmmap mmap(NULL,st.st_size,PROT_READ,MAP_SHARED,fd,0);
+:ab readsig ^[G:r ~/misc/sig^M
+}
+</PRE>
+To keep a live abbreviation from going off in your hands, use ^V.  For
+instance, if I want to type teh but have the the abbreviation above, I
+can let it "fix" it, then back up and unfix it; or I can type "teh^V..."
+and it won't expand the abbreviatoin.
+<P>
+<A HREF="http://soma.npa.uiuc.edu/docs/vi.macros">vi macros document</A>
+<H3>Repeating with .</H3>
+Commands can be repeated with the redo command, normally bound to ".",
+but I've found this to be occasionally unpredictable.  If you use multiple
+key sequences in a macro, and vi is waiting to see if one of those sequences
+might complete, and you start a new command here, it won't be noticed by
+the redo.  (Solaris, HPUX at least).
+<H3>System Differences</H3>
+<UL>
+<LI>Older versions of vi didn't automatically set up arrow-keys in
+command-mode; they didn't interfere with the beep.  (Maybe multiple
+key bindings were new at the same time???)
+<LI>Some versions of vi have encryption, some don't.
+<LI>Options processing is handled differently from version to version.
+Solaris prefers <TT>-c command</TT> in place of <TT>+command</TT>, and
+<TT>-L</TT> instead of <TT>-r</TT>.
+<LI>Differnt systems may have other keys besides : that are "Too dangerous
+to map that".
+<LI>The size of macros (:map, etc.) are limited in different ways on different
+systems.
+<LI>On some systems the environment variable EXINIT overrides .exrc files (Solaris, HPUX), other systems it enhances it (SunOS???, FreeBSD).
+<LI>nvi allows backspace to previous line in edit-mode (if previous line was edited) (FreeBSD).
+<LI>variants of vi that have multiple undo have different styles.  One style
+(linux) uses u as undo, and control-R as redo.  The other style (FreeBSD)
+u acts normally, but . continues on in the same direction as the last u
+(whether it was undo or redo).  I prefer the latter because it doesn't
+interfere as much with traditional vi behaviour.
+</UL>
+<P>
+<A HREF="http://www.engin.umd.umich.edu/ECS/online_help/vi.html">VI Reference Manual</A> from the University of Michigan at Dearborn
+<H3>Trick</H3>
+I've seen various replacements for the fmt command that you can use to format
+paragraphs almost automatically.  Mine's better:
+<P>
+<TT>:map v 0ma}b:'a,.j&lt;ctrl-v&gt;&lt;return&gt;070 ?&nbsp;&nbsp;*&lt;ctrl-v&gt;&lt;escape&gt;dwi&lt;ctrl-v&gt;&lt;return&gt;&lt;ctrl-v&gt;&lt;escape&gt;</TT>
+<P>
+Note the control-v's are there to enter the following characters, which would
+otherwise terminate the map command.  The above was written as you have to
+enter the special characters in traditional vi.  In vim, you can use the
+four literal characters "&lt;CR&gt;" for a carriage return, and also
+"&lt;Esc&gt;" for Escape.  So it may be easier to type this, and it can
+also go into your .vimrc) more readibly (with thanks to
+Bart Van den Broeck):
+<P>
+<TT>:map v 0ma}b:'a,.j&lt;CR&gt;070 ?&nbsp;&nbsp;*&lt;Esc&gt;dwi&lt;CR&gt;&lt;Esc&gt;</TT>
+<P>
+It's better because you don't have to prejoin the paragraph by hitting J
+an arbitrary number of times.  Just hit v (or whatever you've mapped it to)
+starting at the beginning or in the middle of the paragraph, and it joines the
+rest of the paragraph together, formats one line, and moves the cursor down
+again.  Just keep hitting v and it will keep formatting.  You have to stop one
+before the end or you'll end up with an extra short line.  It also does not
+leave spaces at the end of the line.
+</UL>
+<A HREF="http://www.darryl.com/vi.shtml"><IMG WIDTH=100 HEIGHT=35 SRC="/~fine/images/vi.gif" BORDER=0 ALT="vi Powered!" ALIGN=right></A>
+
+<HR>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH="100%">
+<TR>
+<TD>
+<A HREF="/~fine/index.html"><IMG ALT="Tom" SRC="/~fine/ironmotif/tomplate-riveted-small-trans.gif" BORDER=0 ALIGN=MIDDLE> Fine's Home</A>
+</TD>
+<TD>
+
+<!-- Google CSE Search Box Begins -->
+<script>
+  (function() {
+    var cx = '014157869582115000130:drqsms9ro1q';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+<!-- Google CSE Search Box Ends -->
+
+</TD>
+<TD><A HREF="mailto:theopony@head.cfa.harvard.edu"><IMG SRC="/~fine/images/1x1-white.gif" BORDER=0></A></TD>
+<TD ALIGN=right>
+<A HREF="/cgi-bin/hmailer.cgi?method=r&email=PhE7:%3F6p472%5E92CG2C5%5E65F">Send Me Email</A>
+<SCRIPT LANGUAGE=javascript1.2 SRC="/incl/hidemail.js"></SCRIPT>
+</TD>
+</TR>
+</TABLE>
+
+</BODY>
+</HTML>
